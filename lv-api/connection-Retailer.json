@@ -1,0 +1,162 @@
+{
+  "name": "vuittonccc",
+  "x-type": "hlfv1",
+  "x-commitTimeout": 300,
+  "version": "1.0.0",
+  "client": {
+    "organization": "Retailer",
+    "connection": {
+      "timeout": {
+        "peer": {
+          "endorser": "300",
+          "eventHub": "300",
+          "eventReg": "300"
+        },
+        "orderer": "300"
+      }
+    }
+  },
+  "channels": {
+    "vuittonchannel": {
+        "orderers": [
+          "orderer.vuitton.com"
+        ],
+        "peers": {
+            "peer0.lv.vuitton.com": {
+            "endorsingPeer": true,
+            "chaincodeQuery": true,
+            "eventSource": true
+          },
+            "peer0.distributor.vuitton.com": {
+            "endorsingPeer": true,
+            "chaincodeQuery": true,
+            "eventSource": true
+          },
+            "peer0.retailer.vuitton.com": {
+            "endorsingPeer": true,
+            "chaincodeQuery": true,
+            "eventSource": true
+                  }
+                }
+            }
+        },  
+    "organizations": {      
+
+      "LV": {
+        "mspid": "LVMSP",
+        "peers": [
+            "peer0.lv.vuitton.com"
+        ],
+        "certificateAuthorities": [
+          "ca.lv.vuitton.com"
+        ]
+    },
+
+
+      "Distributor": {
+        "mspid": "DistributorMSP",
+        "peers": [
+            "peer0.distributor.vuitton.com"
+        ],
+        "certificateAuthorities": [
+          "ca.distributor.vuitton.com"
+        ]
+    },
+
+
+      "Retailer": {
+        "mspid": "RetailerMSP",
+        "peers": [
+            "peer0.retailer.vuitton.com"
+        ],
+        "certificateAuthorities": [
+          "ca.retailer.vuitton.com"
+        ]
+    }
+      },
+  "orderers":{
+    "orderer.vuitton.com": {
+      "url": "grpc://10.64.82.75:7050",
+      "grpcOptions": {
+        "ssl-target-name-override": "orderer.vuitton.com",
+        "grpc.keepalive_time_ms": 600000,
+        "grpc.max_send_message_length": 15728640,
+        "grpc.max_receive_message_length": 15728640
+      },
+      "tlsCACerts": {
+        "pem": "-----BEGIN CERTIFICATE-----\nMIICNTCCAdygAwIBAgIRAINXGu+ZwkCh8r8GEHC8bpQwCgYIKoZIzj0EAwIwbDEL\nMAkGA1UEBhMCVVMxEzARBgNVBAgTCkNhbGlmb3JuaWExFjAUBgNVBAcTDVNhbiBG\ncmFuY2lzY28xFDASBgNVBAoTC3Z1aXR0b24uY29tMRowGAYDVQQDExF0bHNjYS52\ndWl0dG9uLmNvbTAeFw0yMDAyMDkwNTIwMDBaFw0zMDAyMDYwNTIwMDBaMGwxCzAJ\nBgNVBAYTAlVTMRMwEQYDVQQIEwpDYWxpZm9ybmlhMRYwFAYDVQQHEw1TYW4gRnJh\nbmNpc2NvMRQwEgYDVQQKEwt2dWl0dG9uLmNvbTEaMBgGA1UEAxMRdGxzY2EudnVp\ndHRvbi5jb20wWTATBgcqhkjOPQIBBggqhkjOPQMBBwNCAAQ4O396BiGM5TtHDBeM\n76Sl4jlBaMVbLrEXyGFdDonTWztbJ6yj7aUzFHru/jcCji7+yaUgUIuyNHWUxZy0\nxsoVo18wXTAOBgNVHQ8BAf8EBAMCAaYwDwYDVR0lBAgwBgYEVR0lADAPBgNVHRMB\nAf8EBTADAQH/MCkGA1UdDgQiBCAmJIZuaqjE+prVNYX/K0lybXqk+LDJITbqF+38\nL/YGAzAKBggqhkjOPQQDAgNHADBEAiAOpZYFDmccer6hwNc+Z2Xr8DaQNG4CfmKb\nEZf1DkMDjQIgMAviTkvDXkxHcGWOa+9C+k292GcI9wDpGZW58d4nzk0=\n-----END CERTIFICATE-----\n"
+      }
+    }
+  },
+  "peers": {
+
+     "peer0.lv.vuitton.com": {
+      "url": "grpc://10.64.82.75:7051",
+      "eventUrl": "grpc://10.64.82.75:7053",
+      "grpcOptions": {
+        "ssl-target-name-override": "peer0.lv.vuitton.com"
+      },
+      "tlsCACerts": {
+        "pem": "-----BEGIN CERTIFICATE-----\nMIICQDCCAeegAwIBAgIQGB/NJiI49x9ZWL94KWeWbDAKBggqhkjOPQQDAjByMQsw\nCQYDVQQGEwJVUzETMBEGA1UECBMKQ2FsaWZvcm5pYTEWMBQGA1UEBxMNU2FuIEZy\nYW5jaXNjbzEXMBUGA1UEChMObHYudnVpdHRvbi5jb20xHTAbBgNVBAMTFHRsc2Nh\nLmx2LnZ1aXR0b24uY29tMB4XDTIwMDIwOTA1MjAwMFoXDTMwMDIwNjA1MjAwMFow\ncjELMAkGA1UEBhMCVVMxEzARBgNVBAgTCkNhbGlmb3JuaWExFjAUBgNVBAcTDVNh\nbiBGcmFuY2lzY28xFzAVBgNVBAoTDmx2LnZ1aXR0b24uY29tMR0wGwYDVQQDExR0\nbHNjYS5sdi52dWl0dG9uLmNvbTBZMBMGByqGSM49AgEGCCqGSM49AwEHA0IABFqu\nlG/LcP41K8DaPbsnCOGbFqwwTzcMxEg0jCg16wnGv3AJuAVf5F0WQoj529Mp4DdN\nvk9BBhAuYQ7wMjieS0ijXzBdMA4GA1UdDwEB/wQEAwIBpjAPBgNVHSUECDAGBgRV\nHSUAMA8GA1UdEwEB/wQFMAMBAf8wKQYDVR0OBCIEIEmcochwEbKDyJ+BssB699b+\nf1H1OlijAuerbJw9PtDzMAoGCCqGSM49BAMCA0cAMEQCIGcwQ4ScBpPB/jTbEbPo\n3ZS65M7Ee885H3f0Qiw0aq/WAiB5CUUol9hBzKRKB7zSEjU8YEfI+NeQ14+tgrxO\nJeqnRg==\n-----END CERTIFICATE-----\n"
+      }
+    },
+
+
+     "peer0.distributor.vuitton.com": {
+      "url": "grpc://10.64.82.75:7051",
+      "eventUrl": "grpc://10.64.82.75:7053",
+      "grpcOptions": {
+        "ssl-target-name-override": "peer0.distributor.vuitton.com"
+      },
+      "tlsCACerts": {
+        "pem": "-----BEGIN CERTIFICATE-----\nMIICQDCCAeegAwIBAgIQGB/NJiI49x9ZWL94KWeWbDAKBggqhkjOPQQDAjByMQsw\nCQYDVQQGEwJVUzETMBEGA1UECBMKQ2FsaWZvcm5pYTEWMBQGA1UEBxMNU2FuIEZy\nYW5jaXNjbzEXMBUGA1UEChMObHYudnVpdHRvbi5jb20xHTAbBgNVBAMTFHRsc2Nh\nLmx2LnZ1aXR0b24uY29tMB4XDTIwMDIwOTA1MjAwMFoXDTMwMDIwNjA1MjAwMFow\ncjELMAkGA1UEBhMCVVMxEzARBgNVBAgTCkNhbGlmb3JuaWExFjAUBgNVBAcTDVNh\nbiBGcmFuY2lzY28xFzAVBgNVBAoTDmx2LnZ1aXR0b24uY29tMR0wGwYDVQQDExR0\nbHNjYS5sdi52dWl0dG9uLmNvbTBZMBMGByqGSM49AgEGCCqGSM49AwEHA0IABFqu\nlG/LcP41K8DaPbsnCOGbFqwwTzcMxEg0jCg16wnGv3AJuAVf5F0WQoj529Mp4DdN\nvk9BBhAuYQ7wMjieS0ijXzBdMA4GA1UdDwEB/wQEAwIBpjAPBgNVHSUECDAGBgRV\nHSUAMA8GA1UdEwEB/wQFMAMBAf8wKQYDVR0OBCIEIEmcochwEbKDyJ+BssB699b+\nf1H1OlijAuerbJw9PtDzMAoGCCqGSM49BAMCA0cAMEQCIGcwQ4ScBpPB/jTbEbPo\n3ZS65M7Ee885H3f0Qiw0aq/WAiB5CUUol9hBzKRKB7zSEjU8YEfI+NeQ14+tgrxO\nJeqnRg==\n-----END CERTIFICATE-----\n"
+      }
+    },
+
+      
+      "peer0.retailer.vuitton.com": {
+      "url": "grpc://10.64.82.75:8051",
+      "eventUrl": "grpc://10.64.82.75:8053",
+      "grpcOptions": {
+        "ssl-target-name-override": "peer0.retailer.vuitton.com",
+        "hostnameOverride": "peer0.retailer.vuitton.com"
+      },
+      "tlsCACerts": {
+        "pem": "-----BEGIN CERTIFICATE-----\nMIICWTCCAgCgAwIBAgIRANNgSxk9qn5TcOgAO421fvMwCgYIKoZIzj0EAwIwfjEL\nMAkGA1UEBhMCVVMxEzARBgNVBAgTCkNhbGlmb3JuaWExFjAUBgNVBAcTDVNhbiBG\ncmFuY2lzY28xHTAbBgNVBAoTFHJldGFpbGVyLnZ1aXR0b24uY29tMSMwIQYDVQQD\nExp0bHNjYS5yZXRhaWxlci52dWl0dG9uLmNvbTAeFw0yMDAyMDkwNTIwMDBaFw0z\nMDAyMDYwNTIwMDBaMH4xCzAJBgNVBAYTAlVTMRMwEQYDVQQIEwpDYWxpZm9ybmlh\nMRYwFAYDVQQHEw1TYW4gRnJhbmNpc2NvMR0wGwYDVQQKExRyZXRhaWxlci52dWl0\ndG9uLmNvbTEjMCEGA1UEAxMadGxzY2EucmV0YWlsZXIudnVpdHRvbi5jb20wWTAT\nBgcqhkjOPQIBBggqhkjOPQMBBwNCAATZK0h3EujoZUR0n5aHo2GvoqF+bLGRT8Xj\nTx2hKvtUK1XtSRwKWj92I3ATj4n9JXNv8ZA/K1nueACykoBFXltro18wXTAOBgNV\nHQ8BAf8EBAMCAaYwDwYDVR0lBAgwBgYEVR0lADAPBgNVHRMBAf8EBTADAQH/MCkG\nA1UdDgQiBCBlGQhorIk+X6d7qEARv2K2a2HwSpsMDQH0yvWRJciC1jAKBggqhkjO\nPQQDAgNHADBEAiB5/GD6yQff6K6XzgnPndAsDrMdwdDwgTNMHx6AsWPzfAIgKH0D\n4pkEV3bqLR0zCTzYwUHsLeqe/6MjL8AMgCXDeXY=\n-----END CERTIFICATE-----\n"
+      }
+    }
+   },
+    "certificateAuthorities":{
+    "ca.lv.vuitton.com": {
+      "url": "http://10.64.82.75:7054",
+      "caName": "ca.lv.vuitton.com",
+      "httpOptions": {
+        "verify": false
+      },
+      "tlsCACerts": {
+        "pem":"-----BEGIN CERTIFICATE-----\nMIICOzCCAeKgAwIBAgIRALM/IMl9mbyFBHsLZgf5ZLwwCgYIKoZIzj0EAwIwbzEL\nMAkGA1UEBhMCVVMxEzARBgNVBAgTCkNhbGlmb3JuaWExFjAUBgNVBAcTDVNhbiBG\ncmFuY2lzY28xFzAVBgNVBAoTDmx2LnZ1aXR0b24uY29tMRowGAYDVQQDExFjYS5s\ndi52dWl0dG9uLmNvbTAeFw0yMDAyMDkwNTIwMDBaFw0zMDAyMDYwNTIwMDBaMG8x\nCzAJBgNVBAYTAlVTMRMwEQYDVQQIEwpDYWxpZm9ybmlhMRYwFAYDVQQHEw1TYW4g\nRnJhbmNpc2NvMRcwFQYDVQQKEw5sdi52dWl0dG9uLmNvbTEaMBgGA1UEAxMRY2Eu\nbHYudnVpdHRvbi5jb20wWTATBgcqhkjOPQIBBggqhkjOPQMBBwNCAATHUVqG986I\n0oMdPFKzzdUf7Xi9/A+Ngcxtg1Bm/magZXQj0oio2H2KdLYrXF0beANyyb9YrjaU\nH7Al0h2K8W+ao18wXTAOBgNVHQ8BAf8EBAMCAaYwDwYDVR0lBAgwBgYEVR0lADAP\nBgNVHRMBAf8EBTADAQH/MCkGA1UdDgQiBCBOy+w6KqyozQxcioVpgKUz41IJtOga\nHGROzQSr5OD3MTAKBggqhkjOPQQDAgNHADBEAiANKZHQWji7hSf4K+qQHSEsv2XC\n3ackqA++rCr9fz69igIgI1ctU3Wuy9ynhByKC11OuLxp2EUMUlDhneF7wVcxKjY=\n-----END CERTIFICATE-----\n"
+      }
+    },
+    "ca.distributor.vuitton.com": {
+      "url": "http://10.64.82.75:8054",
+      "caName": "ca.distributor.vuitton.com",
+      "httpOptions": {
+        "verify": false
+      },
+      "tlsCACerts": {
+        "pem":"-----BEGIN CERTIFICATE-----\nMIICYDCCAgegAwIBAgIQfomB0ddc/LTG3qEXv4mgAjAKBggqhkjOPQQDAjCBgTEL\nMAkGA1UEBhMCVVMxEzARBgNVBAgTCkNhbGlmb3JuaWExFjAUBgNVBAcTDVNhbiBG\ncmFuY2lzY28xIDAeBgNVBAoTF2Rpc3RyaWJ1dG9yLnZ1aXR0b24uY29tMSMwIQYD\nVQQDExpjYS5kaXN0cmlidXRvci52dWl0dG9uLmNvbTAeFw0yMDAyMDkwNTIwMDBa\nFw0zMDAyMDYwNTIwMDBaMIGBMQswCQYDVQQGEwJVUzETMBEGA1UECBMKQ2FsaWZv\ncm5pYTEWMBQGA1UEBxMNU2FuIEZyYW5jaXNjbzEgMB4GA1UEChMXZGlzdHJpYnV0\nb3IudnVpdHRvbi5jb20xIzAhBgNVBAMTGmNhLmRpc3RyaWJ1dG9yLnZ1aXR0b24u\nY29tMFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAE8U8ill+NGkkinD5MaSfORRTX\nF9qGemz17Q+fw9vKe8oZ3CS3pI5VFfT5f3pSJxaXiDaukIHey/+sLwvL1oOGR6Nf\nMF0wDgYDVR0PAQH/BAQDAgGmMA8GA1UdJQQIMAYGBFUdJQAwDwYDVR0TAQH/BAUw\nAwEB/zApBgNVHQ4EIgQgBnUOjEy447YPMFG5b1Pj6fsu2sv4A0rkj7O7DVwEJBQw\nCgYIKoZIzj0EAwIDRwAwRAIgCzuCoOteL51FddjP6I1AXl3GDpxi9XhTziZbaM2H\nqsMCIHgNdxn9YLP5hqDR8TnjsDD0bY3f+37KpzUyOnvkGSMV\n-----END CERTIFICATE-----\n"
+      }
+    },
+    "ca.retailer.vuitton.com": {
+      "url": "http://10.64.82.75:9054",
+      "caName": "ca.retailer.vuitton.com",
+      "httpOptions": {
+        "verify": false
+      },
+      "tlsCACerts": {
+        "pem": "-----BEGIN CERTIFICATE-----\nMIICVDCCAfqgAwIBAgIRAMHixG55rEHNYs36DJrcMcQwCgYIKoZIzj0EAwIwezEL\nMAkGA1UEBhMCVVMxEzARBgNVBAgTCkNhbGlmb3JuaWExFjAUBgNVBAcTDVNhbiBG\ncmFuY2lzY28xHTAbBgNVBAoTFHJldGFpbGVyLnZ1aXR0b24uY29tMSAwHgYDVQQD\nExdjYS5yZXRhaWxlci52dWl0dG9uLmNvbTAeFw0yMDAyMDkwNTIwMDBaFw0zMDAy\nMDYwNTIwMDBaMHsxCzAJBgNVBAYTAlVTMRMwEQYDVQQIEwpDYWxpZm9ybmlhMRYw\nFAYDVQQHEw1TYW4gRnJhbmNpc2NvMR0wGwYDVQQKExRyZXRhaWxlci52dWl0dG9u\nLmNvbTEgMB4GA1UEAxMXY2EucmV0YWlsZXIudnVpdHRvbi5jb20wWTATBgcqhkjO\nPQIBBggqhkjOPQMBBwNCAARHzkCg3weMIgnNzX04P9wGFB21JM6wA/i41JSwV7NV\nppWUESYzq0dPxWJDnk4eFmG/xYNsbrCzWdC8FQZGoIOSo18wXTAOBgNVHQ8BAf8E\nBAMCAaYwDwYDVR0lBAgwBgYEVR0lADAPBgNVHRMBAf8EBTADAQH/MCkGA1UdDgQi\nBCCkPHBCVpVV4Z+Uk5m4NzAmkLGT2pyYpgUPnnhIPIIhUzAKBggqhkjOPQQDAgNI\nADBFAiEAzkhX636WUF00Ltcnduvlo0dtO0sNCL6UCCMYi6BnSwoCIAs+qwlqdBT5\nTay/VyBpoDdpXmVycot/iUkSJrB0QDD/\n-----END CERTIFICATE-----\n"
+      }
+    }
+    }
+    }
+    
