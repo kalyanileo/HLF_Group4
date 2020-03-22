@@ -1,0 +1,186 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "Swagger Luxury Brand LV",
+    "version": "1.0.0",
+    "title": "Swagger Luxury Brand LV",
+
+    "contact": {
+      "email": ""
+    },
+    "license": {
+      "name": "Apache 2.0",
+      "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+    }
+  },
+  "host": "localhost:3000",
+  "basePath": "/",
+
+  "schemes": ["http"],
+  "paths": {
+    "/createBag": {
+      "post": {
+        "summary": "Create Bag",
+        "description": "Create Bag",
+        "operationId": "Create Bag",
+        "consumes": ["application/json"],
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Bag object",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Bag"
+            }
+          }
+        ],
+        "responses": {
+          "405": {
+            "description": "Invalid input"
+          }
+        }
+      }
+    },
+    "/assignDistributor": {
+      "post": {
+        "summary": "Assigns Distributor ID or Retailer ID",
+        "description": "Assigns Distributor ID or Retailer ID",
+        "operationId": "Assigns Distributor ID or Retailer ID",
+        "consumes": ["application/json"],
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Bag Object",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Bag"
+            }
+          }
+        ],
+        "responses": {
+          "405": {
+            "description": "Invalid input"
+          }
+        }
+      }
+    },
+    "/getBag": {
+      "post": {
+        "summary": "Get Bag Details",
+        "description": "Get Bag Details",
+        "operationId": "Get Bag Details",
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Bag ID",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/BagId"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "object",
+              "items": {
+                "$ref": "#/definitions/Bag"
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid status value"
+          }
+        }
+      }
+    },
+    "/getBagHistory": {
+      "post": {
+        "summary": "Get Bag History",
+        "description": "Get Bag History",
+        "operationId": "getBagHistory",
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Bag ID",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/BagId"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Bag"
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid status value"
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "Bag": {
+      "type": "object",
+      "properties": {
+        "tagId": {
+          "type": "string",
+          "description": "TagId"
+        },
+        "mfgDate": {
+          "type": "string",
+          "description": "Mfg Date"
+        },
+        "mfg": {
+          "type": "string",
+          "description": "Mfg"
+        },
+        "location": {
+          "type": "string",
+          "description": "Location"
+        },
+        "distributorId": {
+          "type": "string",
+          "description": "Distributor Id"
+        },
+        "retailerId": {
+          "type": "string",
+          "description": "Retailer Id"
+        },
+	"owner":{
+	 "type": "string",
+	 "description":"Owner"
+	}
+      }
+    },
+    "BagId": {
+      "type": "object",
+      "properties": {
+        "tagId": {
+          "type": "string",
+          "description": "Tag Id"
+        }
+      }
+    }
+  },
+  "externalDocs": {
+    "description": "Find out more about Swagger",
+    "url": "http://swagger.io"
+  }
+}

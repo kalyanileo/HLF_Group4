@@ -32,7 +32,7 @@
             "description": "Bag object",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/CreateBag"
+              "$ref": "#/definitions/Bag"
             }
           }
         ],
@@ -57,7 +57,7 @@
             "description": "Bag Object",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/DistBag"
+              "$ref": "#/definitions/Bag"
             }
           }
         ],
@@ -68,7 +68,7 @@
         }
       }
     },
-        "/assignRetailer": {
+	"/assignRetailer": {
       "post": {
         "summary": "Assigns Retailer ID",
         "description": "Assigns Retailer ID",
@@ -82,7 +82,7 @@
             "description": "Bag Object",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/RetailBag"
+              "$ref": "#/definitions/Bag"
             }
           }
         ],
@@ -93,7 +93,7 @@
         }
       }
     },
-        "/sellBag": {
+	"/sellBag": {
       "post": {
         "summary": "Sell Bag",
         "description": "Sell Bag",
@@ -107,7 +107,7 @@
             "description": "Bag Object",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/SellBag"
+              "$ref": "#/definitions/Bag"
             }
           }
         ],
@@ -118,7 +118,7 @@
         }
       }
     },
-        "/resellBagToCust": {
+	"/resellBagToCust": {
       "post": {
         "summary": "Resell Bag to another customer",
         "description": "Resell Bag to another customer",
@@ -132,7 +132,7 @@
             "description": "Bag Object",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/ReSellToCustBag"
+              "$ref": "#/definitions/Bag"
             }
           }
         ],
@@ -143,7 +143,7 @@
         }
       }
     },
-        "/resellBag": {
+	"/resellBag": {
       "post": {
         "summary": "Resell Bag to reseller",
         "description": "Resell Bag to reseller",
@@ -157,7 +157,7 @@
             "description": "Bag Object",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/ReSellBag"
+              "$ref": "#/definitions/Bag"
             }
           }
         ],
@@ -168,7 +168,7 @@
         }
       }
     },
-        "/rentBag": {
+	"/rentBag": {
       "post": {
         "summary": "Rent Bag",
         "description": "Rent Bag",
@@ -182,7 +182,7 @@
             "description": "Bag Object",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/RentBag"
+              "$ref": "#/definitions/Bag"
             }
           }
         ],
@@ -292,140 +292,6 @@
          "type": "string",
          "description":"Owner"
         }
-      }
-    },
-	"CreateBag": {
-      "type": "object",
-      "properties": {
-        "tagId": {
-          "type": "string",
-          "description": "TagId"
-        },
-        "mfgDate": {
-          "type": "string",
-          "description": "Mfg Date"
-        },
-        "mfg": {
-          "type": "string",
-          "description": "Mfg"
-        },
-        "location": {
-          "type": "string",
-          "description": "Location"
-        }
-      }
-    },
-	"DistBag": {
-      "type": "object",
-      "properties": {
-        "tagId": {
-          "type": "string",
-          "description": "TagId"
-        },
-		"distributorId": {
-          "type": "string",
-          "description": "Distributor Id"
-        }
-       
-      }
-    },
-	"RetailBag": {
-      "type": "object",
-      "properties": {
-        "tagId": {
-          "type": "string",
-          "description": "TagId"
-        },
-		"retailerId": {
-          "type": "string",
-          "description": "Retailer Id"
-        }
-       
-      }
-    },
-	"SellBag": {
-      "type": "object",
-      "properties": {
-        "tagId": {
-          "type": "string",
-          "description": "TagId"
-        },
-		"retailerId": {
-          "type": "string",
-          "description": "Retailer Id"
-        },
-		"owner":{
-         "type": "string",
-         "description":"Owner"
-        },
-		"price":{
-         "type": "string",
-         "description":"Price"
-        },
-		"insuranceProviderId":{
-         "type": "string",
-         "description":"InsuranceProviderId"
-        }
-       
-      }
-    },
-	"ReSellToCustBag": {
-      "type": "object",
-      "properties": {
-        "tagId": {
-          "type": "string",
-          "description": "TagId"
-        },		
-		"owner":{
-         "type": "string",
-         "description":"Owner"
-        },
-		"price":{
-         "type": "string",
-         "description":"Price"
-        }       
-      }
-    },
-	"ReSellBag": {
-      "type": "object",
-      "properties": {
-        "tagId": {
-          "type": "string",
-          "description": "TagId"
-        },		
-		"resellerId":{
-         "type": "string",
-         "description":"Reseller ID"
-        },
-		"price":{
-         "type": "string",
-         "description":"Price"
-        }       
-      }
-    },
-	"RentBag": {
-      "type": "object",
-      "properties": {
-        "tagId": {
-          "type": "string",
-          "description": "TagId"
-        },	
-		"resellerId":{
-         "type": "string",
-         "description":"Rent Duration"
-        },
-		"lesseId":{
-         "type": "string",
-         "description":"Lesse Id"
-        },
-		"rentDuration":{
-         "type": "string",
-         "description":"Rent Duration"
-        },
-		"rentAmount":{
-         "type": "string",
-         "description":"Price"
-        }       
       }
     },
     "BagId": {

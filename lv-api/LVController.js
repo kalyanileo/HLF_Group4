@@ -4,7 +4,6 @@ var bodyParser = require("body-parser");
 
 router.use(bodyParser.urlencoded({ extended: true }));
 router.use(bodyParser.json());
-
 const txSubmit = require("./invoke");
 const txFetch = require("./query");
 
@@ -24,6 +23,56 @@ router.post("/createBag", async function(req, res) {
 router.post("/assignDistributor", async function(req, res) {
   try {
     let result = await txSubmit.invoke("assignDistributor", JSON.stringify(req.body));
+    res.send(result);
+  } catch (err) {
+    res.status(500).send(err);
+  }
+});
+
+// Assign Retailer ID
+router.post("/assignRetailer", async function(req, res) {
+  try {
+    let result = await txSubmit.invoke("assignRetailer", JSON.stringify(req.body));
+    res.send(result);
+  } catch (err) {
+    res.status(500).send(err);
+  }
+});
+
+// Sell Bag
+router.post("/sellBag", async function(req, res) {
+  try {
+    let result = await txSubmit.invoke("assignOwner", JSON.stringify(req.body));
+    res.send(result);
+  } catch (err) {
+    res.status(500).send(err);
+  }
+});
+
+// P2P Resell Bag
+router.post("/resellBagToCust", async function(req, res) {
+  try {
+    let result = await txSubmit.invoke("assignOwner", JSON.stringify(req.body));
+    res.send(result);
+  } catch (err) {
+    res.status(500).send(err);
+  }
+});
+
+
+// Sell Bag
+router.post("/resellBag", async function(req, res) {
+  try {
+    let result = await txSubmit.invoke("resellBag", JSON.stringify(req.body));
+    res.send(result);
+  } catch (err) {
+    res.status(500).send(err);
+  }
+});
+
+router.post("/rentBag", async function(req, res) {
+  try {
+    let result = await txSubmit.invoke("rentBag", JSON.stringify(req.body));
     res.send(result);
   } catch (err) {
     res.status(500).send(err);
